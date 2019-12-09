@@ -110,3 +110,5 @@ def get_me():
     user = UserModel.get_one_user(g.user.get('id'))
     ser_user = user_schema.dump(user).data
     return custom_response(ser_user, 200)
+
+
