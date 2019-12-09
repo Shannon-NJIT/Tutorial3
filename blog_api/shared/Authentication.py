@@ -12,7 +12,7 @@ class Auth():
 
         try:
             payload = {
-                'exp': datetime.date.utcnow() + datetime.timedelta(days=1),
+                'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1),
                 'iat': datetime.datetime.utcnow(),
                 'sub':user_id
             }
@@ -34,15 +34,15 @@ class Auth():
     def decode_token(token):
         re = {'data': {}, 'error':{}}
         try:
-            payload = jwt.decode(token, os.getev('JWT_SECRET_KEY'))
+            payload = jwt.decode(token, os.getenv('JWT_SECRET_KEY'))
             re['data'] = {'user_id': payload['sub']}
             return re
         except jwt.ExpiredSignatureError as e1:
                 re['error'] = {'message': 'token expired,please login again'}
                 return re
         except jwt.InvalidTokenError:
-                re['error'] = {'message': 'Ivalid token, please try again with a new token'}
-            return re
+                re['error'] = {'message': 'Invalid token, please try again with a new token'}
+                return re
 
     @staticmethod
     def auth_required(func):
@@ -56,14 +56,14 @@ class Auth():
                     status=400
                     )
 
-                token = request.headers.get('api.token')
-                data = Auth.decode_token(token)
-                if data['error']:
-                    return Response(
-                        mimetype="application/json",
-                        response=json.dumps(data['error']),
-                        status=400
-                    )
+            token = request.headers.get('api.token')
+            data = Auth.decode_token(token)
+            if data['error']:
+                return Response(
+                    mimetype="application/json",
+                    response=json.dumps(data['error']),
+                    status=400
+                )
 
             user_id = data['data']['user_id']
             check_user = UserModel.get_one_user(user_id)
