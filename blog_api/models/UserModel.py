@@ -62,3 +62,4 @@ class UserSchema(Schema):
     modified_at = fields.DateTime(dump_only=True)
     blogposts = fields.Nested(BlogpostSchema, many=True)
 
+
