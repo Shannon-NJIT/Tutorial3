@@ -1,7 +1,7 @@
 import jwt
 import os
 import datetime
-from flask import json
+from flask import json, Response
 from ..models.UserModel import UserModel
 
 class Auth():
