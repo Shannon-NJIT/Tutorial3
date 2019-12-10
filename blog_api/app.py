@@ -1,5 +1,5 @@
 from flask import Flask
-from blog_api.config import app_config
+#from config import app_config
 from .models import db, bcrypt
 
 from .views.UserView import user_api as user_blueprint
@@ -9,7 +9,7 @@ def create_app(env_name):
     # Creating app
     app = Flask(__name__)
     # app initialization
-    app.config.from_object(app_config[env_name])
+    #app.config.from_object(app_config[env_name])
 
     bcrypt.init_app(app)
     db.init_app(app)
