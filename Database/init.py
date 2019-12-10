@@ -1,6 +1,6 @@
 from flask import Flask
 
-from models import db
+from blog_api.models import db
 import config
 
 def create_app():
