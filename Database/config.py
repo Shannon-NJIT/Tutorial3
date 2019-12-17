@@ -6,7 +6,8 @@ import sqlite3 as sql
 # database = os.environ['POSTGRES_DB']
 # port = os.environ['POSTGRES_PORT']
 
-DATABASE_CONNECTION_URI = 'sqlite:////web/Sqlite-Data/flask.db'
+DATABASE_CONNECTION_URI = 'sqlite:////web/Sqlite-Data/cat.db'
 
 #'sqlite+psycopg2:////web/Sqlite-Data/flask.db'
+
 
