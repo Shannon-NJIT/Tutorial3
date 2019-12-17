@@ -6,7 +6,6 @@ services:
             - "5000:5000"
         volumes:
             - .:/web
-        depends_on:
-            - sqlite
-    redis:
-        image: sqlite
+
+    #sqlite3:
+        #image:
