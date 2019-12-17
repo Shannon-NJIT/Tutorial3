@@ -1,16 +1,15 @@
+# compose_flask/app.py
+from flask import Flask, request
 import json
-from flask import request
-import sqlite3 as sql
 
-from init import create_app, db
-from models import Cats
+
+from .init import create_app, db
+from .models import Cats
+
+app = Flask(__name__)
+
 
 app = create_app()
-
-
-@app.route('/')
-def index():
-    return 'first API'
 
 
 @app.route('/test', methods=['GET'])
@@ -59,7 +58,5 @@ def edit(cat_id):
     return json.dumps("Edited"), 200
 
 
-if __name__ == '__main__':
-    # export FLASK_app=app.py
-
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=True)
