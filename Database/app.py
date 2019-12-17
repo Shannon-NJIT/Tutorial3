@@ -3,10 +3,8 @@ from flask import Flask, request
 import json
 
 
-from .init import create_app, db
-from .models import Cats
-
-app = Flask(__name__)
+from __init__ import create_app, db
+from models import Cats
 
 
 app = create_app()
