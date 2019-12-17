@@ -4,7 +4,7 @@ from sqlalchemy import create_engine, MetaData, Table, Integer, String, \
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker, Session
 
-engine = create_engine('sqlite:////web/Sqlite-Data/cat.db')
+engine = create_engine('sqlite:////web/Sqlite-Data/example.db')
 
 model = declarative_base()
 
